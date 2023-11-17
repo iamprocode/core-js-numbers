@@ -195,8 +195,22 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let value;
+  let count = 0;
+  if (n > 1) {
+    for (let i = 1; i <= n; i += 1) {
+      if (n % i === 0) {
+        count += 1;
+        if (count <= 2) {
+          value = true;
+        } else {
+          value = false;
+        }
+      }
+    }
+  }
+  return value;
 }
 
 /**
@@ -214,8 +228,11 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (Number.isNaN(+value) === true) {
+    return def;
+  }
+  return +value;
 }
 
 /**
@@ -229,8 +246,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -246,8 +263,19 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  // создать список фабиначи
+  if (index === 0) {
+    return 0;
+  }
+  let a = 1;
+  let b = 1;
+  for (let i = 3; i <= index; i += 1) {
+    const c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
 }
 
 /**
@@ -261,8 +289,14 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  let i = 1;
+  while (i <= n) {
+    sum += i;
+    i += 1;
+  }
+  return sum;
 }
 
 /**
@@ -276,8 +310,17 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  let i = 0;
+  let sum = 0;
+  const stringNum = num.toString();
+  // alert( eval(n.toString().split('').join('+')) );
+  while (i <= stringNum.length - 1) {
+    // console.log(stringNum[i]);
+    sum += +stringNum[i];
+    i += 1;
+  }
+  return sum;
 }
 
 /**
