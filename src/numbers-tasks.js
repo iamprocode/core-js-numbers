@@ -649,11 +649,12 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  const i = 0;
   let sum = 0;
-  while (i <= number) {
-    if (i % 2 === 0) {
+  // если number меньше ноля?
+  for (let i = 1; i <= Math.abs(number); i += 1) {
+    if (i % 2 !== 0) {
       sum += 1;
+      // console.log(sum);
     }
   }
   return sum;
